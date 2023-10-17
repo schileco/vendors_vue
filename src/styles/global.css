@@ -1,0 +1,35 @@
+:root {
+    --color-background:#000000;
+    --color-background-nav:#444444;
+    --color-background-cards:#000000;
+    --color-background-containers:#222222;
+    --color-background-buttons:#222222;
+    --color-text-light:#EDEDED;
+    --color-text-title:#FF5555;
+    --color-text-dark:#3D3D3D;
+  }
+
+  *{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;                                                                    font-family: 'Marlboro', sans-serif;
+    font-family: Andale Mono, monospace
+                                                
+  }
+
+  html,
+  body{
+    background-color: var(--color-background);
+  }
+
+  a{
+    text-decoration: none;
+    transition: 0.2s opacity;
+}
+  a:hover{
+    opacity: 0.8;
+  }
+
+  .container{
+    width: 90%;
+  }

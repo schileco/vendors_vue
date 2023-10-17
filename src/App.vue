@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <Header :username="nameFromToken"/>
+    <router-view path="$router.key" />
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import './styles/global.css'
 
+import Header from './components/Header'
+import Footer from './components/Footer'
+import jwt_decode from 'jwt-decode'
 export default {
   name: 'App',
+  data(){
+    return{
+      nameFromToken: ''
+    }
+  },
   components: {
-    HelloWorld
-  }
+    Header,
+    Footer
+  },
+  methods:{
+        checkToken(){
+            const token = this.$cookies.get('token')
+            if(token){
+                const decodedToken = jwt_decode(token)
+                this.nameFromToken = decodedToken.name
+            }
+        }
+    },
+    mounted(){
+        this.checkToken()
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
