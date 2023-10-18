@@ -3,7 +3,7 @@
     <div class="container">
         <form @submit.prevent="search" class="search-form">
             <div class="search-input">
-                <input type="text" name="vendorState" v-model="vendorState" placeholder="Filtre por estado">
+                <input type="text" name="vendorState" v-model="vendorState" placeholder="Filtre por estado" required>
                 <button type="submit" class="search-button">Buscar</button>
             </div>
         </form>
@@ -28,7 +28,6 @@ import api from "@/services/api.js"
                     vendorState: this.vendorState
                 }
                 api.post("/search/" + this.$route.params.category, data).then(response =>{
-                    console.log(response.data)
                     this.results = response.data
                 })
                 this.$emit("filter", this.vendorState)

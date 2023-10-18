@@ -142,7 +142,7 @@
       },
 
       receiveSearchQuery(query){
-        this.searchQuery = query
+        this.searchQuery = query.toLowerCase()
       }
     },
 
@@ -151,12 +151,19 @@
         const startIndex = (this.currentPage - 1)*this.documentsPage
         const endIndex   = startIndex + this.documentsPage;
          
-        if(this.searchQuery){
-          return this.vendors.filter(vendor =>{
-          return vendor.vendorState.toLowerCase().includes(this.searchQuery.toLowerCase())
-          })
+        try{
+          if(this.searchQuery){
+           return this.vendors.filter(vendor => {
+            if(vendor.vendorState !== null){
+              return vendor.vendorState.toLowerCase().includes(this.searchQuery.toLowerCase())
+            }
+           })           
+          }
+          return this.vendors.slice(startIndex, endIndex)
+        }catch(err){
+          console.log("ERRO", err)
         }
-        return this.vendors.slice(startIndex, endIndex)
+        
       }
     },
     mounted(){
