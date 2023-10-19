@@ -4,9 +4,6 @@
             <router-link to="/">
             <img id="logo" src="../assets/logo.png" alt="logo">
             </router-link>
-            <router-view v-if="isAuthenticated">
-        <span>Sistema sendo operado por {{ username }}</span>
-      </router-view>
          <router-view v-if="isDefaultRoute"><Button/></router-view>
          <router-view v-if="isVendorsRoute"><ButtonVendors/></router-view>
             

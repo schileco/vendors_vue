@@ -63,19 +63,21 @@
   flex-wrap: wrap;
 }
   .card {
-    background-color: var(--color-background-cards);
-    border: 1px outset #f10000;
+    width: 300px;
+    height: 100px;
+    border: 2px outset rgb(19, 18, 18);
     border-radius: 5px;
+    background-color: var(--color-background-cards);
     padding: 10px;
     cursor:pointer;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: auto;
+    margin: 20px;
+    box-shadow: 0 8px 10px rgb(21, 1, 1);
     display: flex;
     justify-content: space-between;
   }
-
+.card:nth-child(even){
+  background-color: rgb(34, 34, 16);
+}
   .card:hover{
     transition:0.5s;
     background: rgb(121, 118, 114);
