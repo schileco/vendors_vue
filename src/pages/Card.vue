@@ -65,18 +65,19 @@
   .card {
     width: 300px;
     height: 100px;
-    border: 2px outset rgb(19, 18, 18);
-    border-radius: 5px;
+    border: 2px inset rgb(18, 22, 52);
+    border-radius: 30px;
     background-color: var(--color-background-cards);
     padding: 10px;
     cursor:pointer;
-    margin: 20px;
+    margin: 35px;
     box-shadow: 0 8px 10px rgb(21, 1, 1);
     display: flex;
     justify-content: space-between;
   }
 .card:nth-child(even){
-  background-color: rgb(34, 34, 16);
+  background-color: rgb(15, 15, 14);
+  border: 2px inset rgb(26, 29, 55);
 }
   .card:hover{
     transition:0.5s;
