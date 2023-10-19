@@ -1,15 +1,19 @@
 <template>
   
   <div class="container">
+    
     <div class="card" v-for="card in cards" :key="card.id">
+
       <router-link :to="'/vendors/'+ card.categoryName">
       <slot name="header"> <!-- Slot para o cabeçalho do card -->
         <div class="card-header">{{card.categoryName}}</div>     
       </slot>
     </router-link>
+    <div class="delete">
       <button class="delete-button" @click="deleteCategory(card._id)">
          <img src="@/assets/icon_lixo.png" alt="lixo">
        </button>
+      </div>
       
     </div>
   </div>
@@ -73,7 +77,7 @@
     margin: 35px;
     box-shadow: 0 8px 10px rgb(21, 1, 1);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 .card:nth-child(even){
   background-color: rgb(15, 15, 14);
@@ -85,16 +89,20 @@
   }
   
   .card-header {
+    justify-content: center;
     font-weight: bold;
-    color: #ccc;
+    color: #ffffff;
     width: auto;
-    display: grid;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
-    text-align: center;
-    align-content: center;
   }
-
+  .delete{
+  height: 100%;
+  width: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
   .delete-button {
   background-color: #cccccc;
   border-radius: 5em;
@@ -105,6 +113,7 @@
   height: 30px;
   width:30px;
 }
+
 .delete-button img {
   width: 50%;
   height: auto;

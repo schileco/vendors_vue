@@ -2,8 +2,12 @@
   <div class="card-header">
     <searchForm @filter="receiveSearchQuery"/>
     <h2>Fornecedores de {{ categoryName }}</h2>
-    
+
   <div class="card">
+    <div v-if = "loading">
+      <P class="carregando">CARRRRRRRRRR</P>
+    </div>
+
     <div class="card-body" v-for="vendor in paginateAndFilterDocuments" :key="vendor._id">
       <p><strong>NOME:</strong> <span v-if="!isEditing(vendor)">{{ vendor.vendorName }}</span><input v-else v-model="vendor.vendorName" /></p>
       <p><strong>CNPJ:</strong> <span v-if="!isEditing(vendor)">{{ vendor.vendorCNPJ }}</span><input v-else v-model="vendor.vendorCNPJ" /></p>
@@ -70,6 +74,7 @@
     data(){
       return{
         vendors:[],
+        loading: true,
         categoryName:this.$route.params.category,
         editingVendor: null,
         currentPage:1,
@@ -88,9 +93,15 @@
     },
     methods:{
       async listVendors(){
-        api.get("/vendors/"+ this.$route.params.category).then(response =>{
+        this.loading = true
+        try{
+          api.get("/vendors/"+ this.$route.params.category).then(response =>{
           this.vendors = response.data
         })
+      }finally{
+        this.loading = false
+      }
+
       },
 
       saveEdits(vendor){
@@ -173,6 +184,9 @@
   </script>
   
   <style scoped>
+  .carregando{
+    color: white;
+  }
   .card {
     background-color: var(--color-background-containers);
     border-radius: 10px;
