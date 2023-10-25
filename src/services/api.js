@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:'https://vendor-schulze-k668oofao-schulzes-projects.vercel.app/'
-});
-
+     baseURL:'https://191.252.178.20:5300/'
+})
 export default api
