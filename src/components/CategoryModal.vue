@@ -42,7 +42,7 @@
        api.post("/categories", data).then(response => {
       })
       this.closeModal();
-      window.location.reload()
+      setTimeout(window.location.reload(), 250)
       },
     },
   };
