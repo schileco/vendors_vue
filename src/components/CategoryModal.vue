@@ -41,9 +41,9 @@
       }
        api.post("/categories", data).then(response => {
       })
-      
-      setTimeout(window.location.reload(), 3000)
       this.closeModal();
+      setInterval(window.location.reload(), 3000)
+      
       },
     },
   };
