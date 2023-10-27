@@ -111,7 +111,7 @@
     })
       
       this.closeModal();
-      setTimeout(window.location.reload(), 250)
+      setTimeout(window.location.reload(), 3000)
       },
     },
   };
