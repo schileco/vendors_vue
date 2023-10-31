@@ -2,7 +2,7 @@
     <div class="modal-overlay">
       <div class="modal">
         <h2>Adicionar Categoria</h2>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="handleSubmit">
           <div class="form-group">
             <label for="categoryName">Nome da Categoria:</label>
             <input type="text" name="categoryName" id="categoryName" v-model="categoryName" required>
@@ -28,22 +28,39 @@
     },
 
     methods: {
+       emitCustomEvent(){
+        const customEvent = new CustomEvent('updateData')
+        this.$el.dispatchEvent(customEvent)
+      },
+
+      handleSubmit(e){
+        e.preventDefault()
+        this.submitForm().then(()=>{
+          setTimeout(()=>{
+            this.closeModal();
+            this.submitForm();
+            window.location.reload()
+          }, 3000)
+        })
+      },
 
       closeModal() {
       this.$emit('close');
       },
 
       async submitForm(e) {
-        e.preventDefault()
 
       const data ={
         categoryName: this.categoryName
       }
-       api.post("/categories", data).then(response => {
+
+      try{
+        api.post("/categories", data).then(response => {
+
       })
-      this.closeModal();
-      setInterval(window.location.reload(), 3000)
-      
+      }catch(err){
+        console.error(err)
+      }
       },
     },
   };

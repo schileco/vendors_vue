@@ -1,6 +1,8 @@
 <template>
-     <button @click="showModal" class="styled-button">Adicionar Categorias</button>
-     <CategoryModal v-if="isModalVisible" @close="closeModal" @category-added="addCategory"></CategoryModal>
+    <div>
+    <button @click="showModal" class="styled-button">Adicionar Categorias</button>
+    <CategoryModal v-if="isModalVisible" @close="closeModal"></CategoryModal>
+    </div>
 </template>
 
 <script>
@@ -22,12 +24,7 @@ export default {
         },
         closeModal(){
             this.isModalVisible = false
-        },
-        addCategory(categoryName){
-            console.log(`Adcionada: ${categoryName} `)
         }
-
-
     }
 }
 </script>

@@ -22,7 +22,10 @@
   <script>
   import api from '@/services/api'
   import Loading from '@/components/Loading.vue'
+  import {ref, onMounted} from 'vue'
+  import {EventBus} from '../eventBus/eventBus'
   export default {
+
     name: 'Card',
 
     data(){
@@ -35,7 +38,7 @@
     components:{
       Loading
     },
-
+    
     methods:{
       async categoryList() {
         api.get("/categories").then(response => {
@@ -49,9 +52,15 @@
         })
       },
     },
+
+
     mounted() {
       this.categoryList()
+      this.$el.addEventListener('updateData', this.categoryList())
     },
+    beforeUnmount() {
+    this.$el.removeEventListener('updateData', this.categoryList);
+  },
   }
   </script>
   
