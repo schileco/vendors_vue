@@ -22,8 +22,7 @@
   <script>
   import api from '@/services/api'
   import Loading from '@/components/Loading.vue'
-  import {ref, onMounted} from 'vue'
-  import {EventBus} from '../eventBus/eventBus'
+ 
   export default {
 
     name: 'Card',
