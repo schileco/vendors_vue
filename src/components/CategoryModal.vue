@@ -48,7 +48,7 @@
       this.$emit('close');
       },
 
-      async submitForm(e) {
+      async submitForm() {
 
       const data ={
         categoryName: this.categoryName
