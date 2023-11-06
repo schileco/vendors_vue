@@ -40,7 +40,7 @@
             this.closeModal();
             this.submitForm();
             window.location.reload()
-          }, 0.5)
+          }, 500)
         })
       },
 
