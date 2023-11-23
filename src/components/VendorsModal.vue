@@ -104,8 +104,7 @@
         })
       },
 
-      async submitForm(e) {
-        e.preventDefault()
+      async submitForm() {
 
       const data ={
         vendorName: this.vendorName,
