@@ -2,7 +2,7 @@
     <div class="modal-overlay">
       <div class="modal">
         <h2>Adicionar Fornecedor</h2>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="handleSubmit">
           <div class="form-group">
             <label for="categoryName">Nome:</label>
             <input type="text" name="name"  v-model="vendorName" required placeholder="Ex: Space Truck">
@@ -93,6 +93,17 @@
       this.$emit('close');
       },
 
+      handleSubmit(e){
+        e.preventDefault()
+        this.submitForm().then(()=>{
+          setTimeout(()=>{
+            this.closeModal();
+            this.submitForm();
+            window.location.reload()
+          }, 4000)
+        })
+      },
+
       async submitForm(e) {
         e.preventDefault()
 
@@ -109,9 +120,6 @@
       
        api.post("/vendors", data).then(response => {
     })
-      
-      this.closeModal();
-      setTimeout(window.location.reload(), 3000)
       },
     },
   };
